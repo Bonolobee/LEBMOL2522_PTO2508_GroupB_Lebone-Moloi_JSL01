@@ -1,0 +1,241 @@
+/*Import the 'plus jakarta sans' font from Google Fonts to match the figma design typography*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap');
+
+/* Root VARIABLES */
+:root{
+  --bg-color:#F4F7FD;       /* Main background: light blue-gray */
+  --white:#FFFFFF;           /* Card and container backgrounds */
+  --main-purple:#635FC7;     /* Primary brand color: buttons, accents */
+  --text-black:#000112;      /* Main text: headings, card titles */
+  --text-gray:#828FA3;       /* Secondary text: labels, subtitles */
+  --lines-color:#E4EBFA;     /* Borders and dividers */
+  --purple-1:#635FC7;        /* Logo bar 1: darkest purple */
+  --purple-2:#A29BFE;        /* Logo bar 2: medium purple */
+  --purple-3:#DDD6FF;        /* Logo bar 3: lightest purple */
+}
+
+/* GLOBAL STYLES */
+*{box-sizing:border-box}
+
+/* Body: Main flex container for sidebar + main content layout */
+body{
+  margin:0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background:var(--bg-color);
+  color:var(--text-black);
+  display:flex;          /* Enables sidebar + main content side-by-side */
+  height:100vh;          /* Full viewport height */
+}
+
+/* SIDEBAR NAVIGATION */
+
+/* Fixed left sidebar: 260px width, always visible */
+nav{
+  width:260px;
+  height:100vh;          /* Full viewport height */
+  background:var(--white);
+  border-right:1px solid var(--lines-color);
+  padding:24px;
+  position:fixed;        /* Stays in place while scrolling */
+  overflow-y:auto;       /* Allows scrolling if content exceeds height */
+}
+
+/* Nav content: vertical flex layout with spacing */
+.nav-content{
+  display:flex;
+  flex-direction:column;
+  gap:28px;              /* Space between logo, label, and button */
+}
+
+/* KANBAN LOGO IN SIDEBAR */
+.kanban-logo{
+  display:flex;
+  align-items:center;    /* Vertically center bars and text */
+  gap:12px;              /* Space between 3 bars and "kanban" text */
+}
+
+/* Logo bars: 3 colored vertical rectangles with gradient effect */
+.logo-bar{
+  width:6px;
+  height:24px;
+  border-radius:3px;
+}
+
+/* Individual bar colors: gradient from dark to light purple */
+.purple-1{background:var(--purple-1)}  /* Darkest */
+.purple-2{background:var(--purple-2)}  /* Medium */
+.purple-3{background:var(--purple-3)}  /* Lightest */
+
+/* Logo heading: "kanban" text */
+.kanban-logo h1{
+  margin:0;
+  font-size:24px;
+  font-weight:700;
+  color:var(--text-black);
+}
+
+/* BOARD LABEL */
+
+/* "ALL BOARDS (1)" section header */
+nav h4{
+  margin:0;
+  padding-left:8px;
+  color:var(--text-gray);
+  font-size:12px;
+  letter-spacing:2.4px;
+  text-transform:uppercase;  /* Forces uppercase styling */
+  font-weight:700;
+}
+
+/* NAVIGATION BUTTON */
+
+/* Launch Career button: Full width with rounded right corners */
+.nav-btn{
+  width:100%;            /* Stretches across sidebar */
+  background:var(--main-purple);
+  color:var(--white);
+  border:none;
+  padding:14px 24px;
+  border-radius:0 30px 30px 0;  /* Rounded only on right side */
+  cursor:pointer;
+  font-weight:700;
+  font-size:15px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  display:flex;
+  align-items:center;    /* Center text vertically */
+  justify-content:center; /* Center text horizontally */
+}
+
+/* Hover effect: Lighter purple on mouse over */
+.nav-btn:hover{background-color:#a8a4ff}
+
+/* MAIN CONTAINER */
+
+/* Right side of layout: accounts for fixed sidebar width */
+.main-container{
+  margin-left:260px;     /* Push right to avoid sidebar overlap */
+  flex:1;                /* Takes remaining space */
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;       /* Prevents overflow from child elements */
+}
+
+/* TOP BAR / HEADER */
+
+/* Header section with board title */
+.top-bar{
+  background:var(--white);
+  border-bottom:1px solid var(--lines-color);
+  padding:24px;
+}
+
+/* Board title heading */
+.top-bar h2{
+  margin:0;
+  font-size:24px;
+  font-weight:700;
+  color:var(--text-black);
+}
+
+/* MAIN KANBAN BOARD */
+
+/* Main container for 3 task columns */
+main{
+  display:flex;          /* Horizontal layout for columns */
+  gap:24px;              /* Space between columns */
+  padding:24px;
+  align-items:flex-start; /* Align columns to top (not stretched) */
+  overflow-x:auto;       /* Horizontal scroll on small screens */
+  flex:1;                /* Takes remaining space below header */
+}
+
+/* COLUMN STRUCTURE */
+
+/* Individual task column (TODO, DOING, DONE) */
+.column{
+  width:280px;
+  flex-shrink:0;         /* Prevents columns from shrinking below 280px */
+}
+
+/* Column header: dot + title + count */
+.column-header{
+  display:flex;
+  align-items:center;
+  gap:12px;              /* Space between dot and title */
+  margin-bottom:24px;
+}
+
+/* Column header text (TODO, DOING, DONE) */
+.column-header h4{
+  margin:0;
+  color:var(--text-gray);
+  font-size:12px;
+  letter-spacing:2.4px;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+/* STATUS DOTS */
+
+/* Colored circle indicating column status */
+.dot{
+  width:15px;
+  height:15px;
+  border-radius:50%;
+}
+
+/* Status colors: each dot represents column type */
+.purple{background:var(--main-purple)}  /* DOING: Primary purple */
+.blue{background:#49C4E5}               /* TODO: Cyan blue */
+.green{background:#67E2AE}              /* DONE: Teal green */
+
+/* TASK CARDS */
+
+/* Container for stacking task cards vertically */
+.tasks-container{
+  display:flex;
+  flex-direction:column;
+  gap:20px;              /* Space between individual task cards */
+}
+
+/* Individual task card: white container with subtle shadow */
+.task-card{
+  background:var(--white);
+  padding:20px 18px;
+  border-radius:8px;
+  box-shadow:0 6px 10px rgba(54,78,126,0.06);  /* Subtle shadow for depth */
+}
+
+/* Task card title */
+.task-card h3{
+  margin:0;
+  font-size:15px;
+  font-weight:700;
+  color: var(--text-black);
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablet and smaller: adjust layout for medium screens (≤ 768px) */
+@media (max-width:768px){
+  body{flex-direction:column}
+  nav{
+    width:100%;            /* Full width sidebar */
+    height:auto;
+    position:relative;     /* Remove fixed positioning */
+    border-right:none;
+    border-bottom:1px solid var(--lines-color);
+    padding:16px;
+  }
+  .main-container{margin-left:0}  /* Remove sidebar margin */
+  main{gap:16px;padding:16px}
+  .column{width:260px}
+}
+
+/* Mobile and extra small: minimal layout for phones (≤ 480px) */
+@media (max-width:480px){
+  .top-bar h2{font-size:18px}  /* Smaller heading */
+  .column{width:240px}          /* Narrower columns */
+  .task-card{padding:16px 12px} /* Reduced padding */
+  .task-card h3{font-size:14px} /* Smaller text */
+}
