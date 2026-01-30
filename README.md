@@ -22,10 +22,10 @@ A responsive Kanban board application built with HTML, CSS, and JavaScript. This
 ## Project Structure
 ```
 d:\BonoloBee\LEBMOL2522_PTO2508_GroupB_Lebone-Moloi_JSL01\
-├── index.html          # Main HTML file with board structure
-├── style.css           # Styling and responsive design
-├── main.js             # JavaScript functionality
-└── README.md           # Project documentation
+Index.html          # Main HTML file with board structure
+Style.css           # Styling and responsive design
+Main.js             # JavaScript functionality
+README.md           # Project documentation
 ```
 
 ## Installation & Setup
